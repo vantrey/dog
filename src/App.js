@@ -22,11 +22,9 @@ class App extends React.Component {
   }
   player = new Audio(voice)
 
-  onImgClick = (e) => {
-    if (Number(e.currentTarget.id) === this.state.index) {
+  onTargetClick = () => {
       this.setState({counter: this.state.counter + 1})
       this.player.play()
-    }
   }
 
   render = () => {
@@ -34,18 +32,24 @@ class App extends React.Component {
       let classForVisible
       if (this.state.index === i) {
         classForVisible =  'photo show'
+        return (
+          <div className="item"
+               onClick={this.onTargetClick}
+               id={i}
+          >
+            <img src={img} className={classForVisible}/>
+          </div>
+        )
       } else {
         classForVisible = 'photo'
+        return (
+          <div className="item"
+               id={i}
+          >
+            <img src={img} className={classForVisible}/>
+          </div>
+        )
       }
-
-      return (
-        <div className="item"
-             onClick={this.onImgClick}
-             id={i}
-        >
-          <img src={img} className={classForVisible}/>
-        </div>
-      )
     })
 
     return (
