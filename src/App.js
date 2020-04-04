@@ -14,7 +14,7 @@ class App extends React.Component {
     setInterval(()=>{
       let index = this.getRandomImageIndex()
       this.setState({index})
-    }, 5000)
+    }, 3000)
   }
 
   getRandomImageIndex = () => {
